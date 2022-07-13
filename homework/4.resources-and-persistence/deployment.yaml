@@ -1,0 +1,47 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pg
+  name: pg
+  namespace: pg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pg
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: pg
+      namespace: pg
+    spec:
+      containers:
+      - image: postgres:10.13
+        name: pg
+        env:
+        - name: POSTGRES_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pgpass
+              key: key1
+        - name: POSTGRES_USER
+          value: "testuser"
+        - name: POSTGRES_DB
+          value: "testdatabase"
+        - name: PGDATA
+          value: "/var/lib/postgresql/data/pgdata"
+        volumeMounts:
+          - name: pg-pvc
+            mountPath: /var/lib/postgresql/data
+        ports:
+          - protocol: TCP
+            containerPort: 5432
+            name: pg
+      volumes:
+        - name: pg-pvc
+          persistentVolumeClaim:
+            claimName: pvc
