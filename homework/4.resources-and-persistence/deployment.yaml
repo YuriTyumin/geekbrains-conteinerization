@@ -5,7 +5,6 @@ metadata:
   labels:
     app: pg
   name: pg
-  namespace: pg
 spec:
   replicas: 1
   selector:
@@ -17,7 +16,6 @@ spec:
     metadata:
       labels:
         app: pg
-      namespace: pg
     spec:
       containers:
       - image: postgres:10.13
@@ -35,13 +33,12 @@ spec:
         - name: PGDATA
           value: "/var/lib/postgresql/data/pgdata"
         volumeMounts:
-          - name: pg-pvc
+          - name: pg-pvc-vm
             mountPath: /var/lib/postgresql/data
         ports:
           - protocol: TCP
             containerPort: 5432
-            name: pg
       volumes:
-        - name: pg-pvc
+        - name: pg-pvc-vm
           persistentVolumeClaim:
-            claimName: pvc
+            claimName: pg-pvc
