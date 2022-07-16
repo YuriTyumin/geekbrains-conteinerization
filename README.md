@@ -75,6 +75,8 @@
 
 🔹 [ENTRYPOINT vs CMD: назад к основам](https://habr.com/ru/company/southbridge/blog/329138/)
 
+🔹 [ADD vs COPY](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/#add-or-copy)
+
 🔹 [Dockerfile reference](https://docs.docker.com/engine/reference/builder/)
 
 🔹 [Use multi-stage builds](https://docs.docker.com/develop/develop-images/multistage-build/)
@@ -163,6 +165,8 @@
 
 🎥 [Митап "Stateful-приложения в 2020 году"](https://www.youtube.com/watch?v=ykIh4-616Ic&list=PL8D2P0ruohODzihD0D0FZXkVHXtXbb6w3&index=4&ab_channel=HighLoadChannel)
 
+🎥 [Базы данных и Kubernetes (Дмитрий Столяров, Флант, HighLoad++ 2018)](https://www.youtube.com/watch?v=BnegHj53pW4&ab_channel=%D0%A4%D0%BB%D0%B0%D0%BD%D1%82)
+
 🎥 [Заделываем дыры в кластере Kubernetes](https://www.youtube.com/watch?v=Ik7VqbgpRiQ&ab_channel=DevOpsChannel)
 
 🔹 [Jobs & Cronjobs in Kubernetes Cluster](https://medium.com/avmconsulting-blog/jobs-cronjobs-in-kubernetes-cluster-d0e872e3c8c8)
@@ -170,6 +174,8 @@
 🔹 [Tоп-10 PromQL запросов для мониторинга Kubernetes](https://habr.com/ru/company/timeweb/blog/562374/)
 
 ## Лекция 8. Деплой тестового приложения в кластер
+
+🔹 [Запуск проекта в Kubernetes за 60 минут](https://mcs.mail.ru/blog/launching-a-project-in-kubernetes)
 
 🔹 [Антипаттерны деплоя в Kubernetes. Часть 1](https://habr.com/ru/company/timeweb/blog/557320/)
 

@@ -30,7 +30,7 @@ ssh-keygen
 ```bash
 cd app
 git init
-git remote add origin git@gitlab.com:<your_gitlab_account/geekbrains.git
+git remote add origin git@gitlab.com:<your_gitlab_account>/geekbrains.git
 git add .
 git commit -m "Initial commit"
 git push -u origin master
@@ -85,7 +85,7 @@ export NAMESPACE=prod; kubectl get secret $(kubectl get sa deploy --namespace $N
 K8S_STAGE_CI_TOKEN и K8S_PROD_CI_TOKEN соответственно.
 
 * Создаем секреты для авторизации Kubernetes в Gitlab registry. При создании используем Token, созданный в **Settings -> Repository -> Deploy Tokens**.
-
+(read_registry, write_registry permissions)
 ```bash
 kubectl create secret docker-registry gitlab-registry --docker-server=registry.gitlab.com --docker-username=<USERNAME> --docker-password=<PASSWORD> --docker-email=admin@admin.admin --namespace stage
 kubectl create secret docker-registry gitlab-registry --docker-server=registry.gitlab.com --docker-username=<USERNAME> --docker-password=<PASSWORD> --docker-email=admin@admin.admin --namespace prod
@@ -109,7 +109,7 @@ kubectl apply --namespace prod -f app/kube/postgres/
 
 * Меняем хост в ингрессе приложения и применяем манифесты
 Для этого открываем app/kube/ingress.yaml
-Там ищем <CHANGE ME> и вставляем вместо него stage
+Там ищем плейсхолдер "CHANGE ME" и вставляем вместо него stage
 
 Далее применяем на stage
 
