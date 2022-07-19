@@ -1,0 +1,53 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: pg
+  name: rm
+#  namespace: pg
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rm
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+#      namespace: pg
+      labels:
+        app: rm
+    spec:
+      containers:
+      - image: redmine:4.1.1
+        name: rm
+        env:
+        - name: REDMINE_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: pgpass
+              key: key1
+        - name: REDMINE_SECRET_KEY_BASE
+          valueFrom:
+            secretKeyRef:
+              name: rmpass
+              key: key1
+        - name: REDMINE_DB_POSTGRES
+          value: "database"
+        - name: REDMINE_DB_USERNAME
+          value: "testuser"
+        - name: REDMINE_DB_DATABASE
+          value: "testdatabase"
+        - name: PGDATA
+          value: "/var/lib/postgresql/data/pgdata"
+        volumeMounts:
+          - name: pg-pvc-vm
+            mountPath: /var/lib/postgresql/data
+        ports:
+          - protocol: TCP
+            containerPort: 3000
+      volumes:
+        - name: pg-pvc-vm
+          persistentVolumeClaim:
+            claimName: pg-pvc
